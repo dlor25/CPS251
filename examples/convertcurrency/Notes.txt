@@ -1,0 +1,12 @@
+View was under "Design"
+Go to the top right corner. There's 3-4 buttons that says Code, Split, Design, and Recent Files, Tab Actions, and More.
+Click Code or Alt + Shift + Right.
+
+Phone is at API 27.
+App is at API 28.
+
+GO TO (Grade Scripts > build.gradle.kts (Module :app))
+
+UNDER "android {"
+
+CHANGE "minSdk = 28" TO "minSdk = 27"
