@@ -1,0 +1,164 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Text Above Buttons -->
+    <TextView
+        android:id="@+id/textAbove"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_above"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <!-- Button 1 -->
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button1_text"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textAbove"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <!-- Button 2 -->
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button2_text"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button1"
+        app:layout_constraintTop_toBottomOf="@+id/textAbove"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <!-- Button 3 -->
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button3_text"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintTop_toBottomOf="@+id/textAbove"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <!-- Table Layout -->
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="345dp"
+        android:layout_height="98dp"
+        android:contentDescription="@string/table_layout_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        tools:ignore="TextSizeCheck"> <!-- 22sp text size is too big, default works, supressed warning -->
+
+        <!-- Row 1 -->
+        <TableRow
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="301dp">
+
+            <!-- Check Box 1 -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checkbox1_text"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="301dp" />
+
+            <!-- Check Box 2 -->
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checkbox2_text" />
+
+            <!-- Check Box 3 -->
+            <CheckBox
+                android:id="@+id/checkBox3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checkbox3_text"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="301dp" />
+        </TableRow>
+
+        <!-- Row 2 -->
+        <TableRow
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="349dp">
+
+            <!-- Check Box 4 -->
+            <CheckBox
+                android:id="@+id/checkBox4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checkbox4_text"
+                tools:layout_editor_absoluteX="38dp"
+                tools:layout_editor_absoluteY="349dp" />
+
+            <!-- Check Box 5 -->
+            <CheckBox
+                android:id="@+id/checkBox5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checkbox5_text"
+                tools:layout_editor_absoluteX="150dp"
+                tools:layout_editor_absoluteY="349dp" />
+
+            <!-- Check Box 6 -->
+            <CheckBox
+                android:id="@+id/checkBox6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/checkbox6_text"
+                tools:layout_editor_absoluteX="262dp"
+                tools:layout_editor_absoluteY="349dp" />
+        </TableRow>
+    </TableLayout>
+
+
+    <!-- Image -->
+    <ImageView
+        android:id="@+id/sampleImage"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:contentDescription="@string/smiley_face"
+        android:scaleType="centerInside"
+        android:src="@drawable/smileyface"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        app:layout_constraintVertical_bias="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

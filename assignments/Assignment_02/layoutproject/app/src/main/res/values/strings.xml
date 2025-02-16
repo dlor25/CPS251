@@ -1,0 +1,17 @@
+<resources>
+    <string name="text_above">This is my layout project</string>
+
+    <string name="button1_text">Button 1</string>
+    <string name="button2_text">Button 2</string>
+    <string name="button3_text">Button 3</string>
+
+    <string name="table_layout_description">Checkboxes for selecting options</string>
+    <string name="checkbox1_text">Check Box 1</string>
+    <string name="checkbox2_text">Check Box 2</string>
+    <string name="checkbox3_text">Check Box 3</string>
+    <string name="checkbox4_text">Check Box 4</string>
+    <string name="checkbox5_text">Check Box 5</string>
+    <string name="checkbox6_text">Check Box 6</string>
+
+    <string name="smiley_face">Smiley Face</string>
+</resources>
