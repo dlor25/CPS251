@@ -6,7 +6,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 
 class MainActivity : AppCompatActivity() {
     private lateinit var nameEntry: EditText
@@ -26,9 +25,9 @@ class MainActivity : AppCompatActivity() {
         resultTextView = findViewById(R.id.resultTextView)
 
         // Observe the LiveData from ViewModel
-        namesViewModel.namesList.observe(this, Observer { names ->
+        namesViewModel.namesList.observe(this) { names ->
             updateResultsDisplay(names)
-        })
+        }
 
         // Set up click listener for the button
         addNameButton.setOnClickListener {
