@@ -1,4 +1,4 @@
-package com.example.navigationproject
+package com.example.navigationdemo
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
