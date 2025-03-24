@@ -3,29 +3,28 @@ package com.example.recycleviewproject
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.snackbar.Snackbar
 import com.example.recycleviewproject.databinding.CardViewBinding
+import com.google.android.material.snackbar.Snackbar
 
-class RecyclerAdapter(private val data: Data) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
+class RecyclerAdapter(private val items: List<Item>) : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: CardViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
         init {
-            // Set the click listener on the itemView
             itemView.setOnClickListener { v ->
                 val position = adapterPosition
-                if (position != RecyclerView.NO_POSITION) { // Check if position is valid
-                    Snackbar.make(v, "Click detected on item $position", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
+                if (position != RecyclerView.NO_POSITION) {
+                    Snackbar.make(v, "Clicked: ${items[position].title}", Snackbar.LENGTH_LONG)
+                        .setAction("OK", null)
                         .show()
                 }
             }
         }
 
-        fun bind(title: String, detail: String, imageResId: Int) {
-            binding.itemImage.setImageResource(imageResId)
-            binding.itemTitle.text = title
-            binding.itemDetail.text = detail
+        fun bind(item: Item) {
+            binding.itemImage.setImageResource(item.imageResId)
+            binding.itemTitle.text = item.title
+            binding.itemDetail.text = item.detail
         }
     }
 
@@ -35,8 +34,8 @@ class RecyclerAdapter(private val data: Data) : RecyclerView.Adapter<RecyclerAda
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data.titles[position], data.details[position], data.images[position])
+        holder.bind(items[position])
     }
 
-    override fun getItemCount(): Int = data.titles.size
+    override fun getItemCount(): Int = items.size
 }

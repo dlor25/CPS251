@@ -3,7 +3,6 @@ package com.example.recycleviewproject
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.recycleviewproject.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,8 +17,11 @@ class MainActivity : AppCompatActivity() {
         // Initialize RecyclerView
         binding.mRecycleView.layoutManager = LinearLayoutManager(this)
 
+        // Get random items
+        val randomData = Data().getRandomItems(8)
+
         // Initialize Adapter
-        adapter = RecyclerAdapter(Data())
+        adapter = RecyclerAdapter(randomData)
         binding.mRecycleView.adapter = adapter
     }
 }
