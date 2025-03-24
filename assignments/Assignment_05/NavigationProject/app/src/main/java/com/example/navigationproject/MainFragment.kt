@@ -10,37 +10,39 @@ import com.example.navigationproject.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
-    private var _binding: FragmentMainBinding? = null
-    private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        val binding = FragmentMainBinding.inflate(inflater, container, false)
+
+        // Set OnClickListener for buttons to navigate to the SecondFragment
+        binding.button1.setOnClickListener {
+            navigateToSecondFragment("android_image_1")
+        }
+
+        binding.button2.setOnClickListener {
+            navigateToSecondFragment("android_image_2")
+        }
+
+        binding.button3.setOnClickListener {
+            navigateToSecondFragment("android_image_3")
+        }
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    private fun navigateToSecondFragment(imageName: String) {
+        val bundle = Bundle()
+        bundle.putString("image_name", imageName)
 
-        // Button click listeners to pass image resources to SecondFragment
-        binding.buttonImage1.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToSecondFragment(R.drawable.android_image_1)
-            Navigation.findNavController(it).navigate(action)
-        }
-        binding.buttonImage2.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToSecondFragment(R.drawable.android_image_2)
-            Navigation.findNavController(it).navigate(action)
-        }
-        binding.buttonImage3.setOnClickListener {
-            val action = MainFragmentDirections.actionMainFragmentToSecondFragment(R.drawable.android_image_3)
-            Navigation.findNavController(it).navigate(action)
-        }
-    }
+        // Create the second fragment instance and pass the bundle
+        val secondFragment = SecondFragment()
+        secondFragment.arguments = bundle
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
+        // Perform the fragment transaction to navigate to the second fragment
+        parentFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, secondFragment)
+            .commit()  // No addToBackStack() here, so no back navigation
     }
 }

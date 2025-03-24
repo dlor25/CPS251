@@ -10,29 +10,23 @@ import com.example.navigationproject.databinding.FragmentSecondBinding
 
 class SecondFragment : Fragment() {
 
-    private var _binding: FragmentSecondBinding? = null
-    private val binding get() = _binding!!
-
-    // Retrieve the passed image resource ID using navArgs
-    private val args: SecondFragmentArgs by navArgs()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentSecondBinding.inflate(inflater, container, false)
+        val binding = FragmentSecondBinding.inflate(inflater, container, false)
+
+        // Get the image name from the arguments
+        val imageName = arguments?.getString("image_name")
+
+        // Load the image based on the passed name
+        when (imageName) {
+            "android_image_1" -> binding.imageView.setImageResource(R.drawable.android_image_1)
+            "android_image_2" -> binding.imageView.setImageResource(R.drawable.android_image_2)
+            "android_image_3" -> binding.imageView.setImageResource(R.drawable.android_image_3)
+        }
+
         return binding.root
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        // Display the image passed from MainFragment
-        binding.imageView.setImageResource(args.imageResId)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
 }
+

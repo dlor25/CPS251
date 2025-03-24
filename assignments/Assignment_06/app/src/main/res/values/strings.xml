@@ -1,0 +1,37 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">RecycleviewProject</string>
+
+    <string-array name="Image">
+        <item tools:ignore="Typos">android_image_1</item>
+        <item>android_image_2</item>
+        <item>android_image_3</item>
+        <item>android_image_4</item>
+        <item>android_image_5</item>
+        <item>android_image_6</item>
+        <item>android_image_7</item>
+        <item>android_image_8</item>
+    </string-array>
+
+    <string-array name="Title">
+        <item>Chapter One</item>
+        <item>Chapter Two</item>
+        <item>Chapter Three</item>
+        <item>Chapter Four</item>
+        <item>Chapter Five</item>
+        <item>Chapter Six</item>
+        <item>Chapter Seven</item>
+        <item>Chapter Eight</item>
+    </string-array>
+
+    <string-array name="Detail">
+        <item>Item one details</item>
+        <item>Item two details</item>
+        <item>Item three details</item>
+        <item>Item four details</item>
+        <item>Item five details</item>
+        <item>Item six details</item>
+        <item>Item seven details</item>
+        <item>Item eight details</item>
+    </string-array>
+
+</resources>
