@@ -25,9 +25,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Detail TextView -->
-
-    <!-- ImageView with fixed size of 100x100 and centered -->
-
     <TextView
         android:id="@+id/detailText"
         android:layout_width="wrap_content"
@@ -41,6 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailTitle" />
 
+    <!-- ImageView with fixed size of 200x283 and centered -->
     <ImageView
         android:id="@+id/detailImage"
         android:layout_width="200dp"
