@@ -40,8 +40,8 @@ class ContactListAdapter(private val listener: OnContactDeleteListener) :
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
         val current = contacts[position]
-        holder.nameTextView.text = current.contactName ?: ""
-        holder.phoneTextView.text = current.contactPhone ?: ""
+        holder.nameTextView.text = current.contactName
+        holder.phoneTextView.text = current.contactPhone
     }
 
     override fun getItemCount() = contacts.size

@@ -33,10 +33,6 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-
-
-
-
     fun deleteContact(id: Int) {
         repository.delete(id)
     }

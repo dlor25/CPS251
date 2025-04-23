@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.*
 
 class ContactRepository(contactDao: ContactDao) {
-    val searchResults = MutableLiveData<List<Contact>>()
     private var contactDao: ContactDao? = contactDao // Assign the provided ContactDao
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
     val allContacts: LiveData<List<Contact>> = contactDao.getAllContacts()

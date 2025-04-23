@@ -39,8 +39,6 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
             }
         }
 
-
-
         // Add button click listener
         binding.buttonAdd.setOnClickListener {
             val name = binding.editTextName.text.toString().trim()
