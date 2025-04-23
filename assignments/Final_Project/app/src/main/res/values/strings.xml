@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ContactProject</string>
+
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_phone">Enter Phone Number</string>
+
+    <string name="add_btn">Add</string>
+    <string name="find_btn">Find</string>
+    <string name="desc_btn">DESC</string>
+    <string name="asc_btn">ASC</string>
+    <string name="del_btn">Delete contact</string>
+</resources>
