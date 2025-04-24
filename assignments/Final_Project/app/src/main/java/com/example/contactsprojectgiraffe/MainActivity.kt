@@ -1,11 +1,11 @@
-package com.example.contactproject
+package com.example.contactsprojectgiraffe
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.contactproject.databinding.ActivityMainBinding
+import com.example.contactsprojectgiraffe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteListener {
     private lateinit var binding: ActivityMainBinding
@@ -55,6 +55,7 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
             // Clear input fields
             binding.editTextName.text.clear()
             binding.editTextPhone.text.clear()
+            binding.editTextName.requestFocus()
         }
 
         // Search button click listener
@@ -66,6 +67,10 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
             }
 
             viewModel.findContact(searchText)
+
+            // Clear input fields
+            binding.editTextName.text.clear()
+            binding.editTextPhone.text.clear()
         }
 
         // Sort buttons click listeners

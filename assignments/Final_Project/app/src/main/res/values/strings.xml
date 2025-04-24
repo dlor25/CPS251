@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ContactProject</string>
+    <string name="app_name">contactsprojectgiraffe</string>
 
     <string name="enter_name">Enter Name</string>
     <string name="enter_phone">Enter Phone Number</string>

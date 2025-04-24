@@ -19,5 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ContactDatabase"
+rootProject.name = "contactsprojectgiraffe"
 include(":app")

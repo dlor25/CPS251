@@ -1,4 +1,4 @@
-package com.example.contactproject
+package com.example.contactsprojectgiraffe
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

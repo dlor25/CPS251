@@ -1,4 +1,4 @@
-package com.example.contactproject
+package com.example.contactsprojectgiraffe
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -34,7 +34,7 @@ class ContactListAdapter(private val listener: OnContactDeleteListener) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.contact_list_item, parent, false)
+            .inflate(R.layout.card_layout, parent, false)
         return ContactViewHolder(view)
     }
 

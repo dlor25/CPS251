@@ -10,11 +10,11 @@ android {
     }
 
 
-    namespace = "com.example.contactproject"
+    namespace = "com.example.contactsprojectgiraffe"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.contactproject"
+        applicationId = "com.example.contactsprojectgiraffe"
         minSdk = 26
         targetSdk = 35
         versionCode = 1
@@ -33,11 +33,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
+    }
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(22))
+        }
     }
 }
 

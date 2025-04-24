@@ -1,4 +1,4 @@
-package com.example.contactproject
+package com.example.contactsprojectgiraffe
 
 import org.junit.Test
 
