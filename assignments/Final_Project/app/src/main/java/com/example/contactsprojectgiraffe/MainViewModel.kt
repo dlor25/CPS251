@@ -9,6 +9,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val repository: ContactRepository
     private val allContacts: LiveData<List<Contact>>?
     private val searchResults: MutableLiveData<List<Contact>>
+    enum class SortOrder { NONE, ASC, DESC }
+
+    private var currentSortOrder = SortOrder.NONE
 
     init {
         val database = ContactDatabase.getDatabase(application)
@@ -41,15 +44,22 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return searchResults  // MutableLiveData to allow updates
     }
 
-    fun getAllContacts(): LiveData<List<Contact>>? {
-        return allContacts
-    }
-
     fun sortContactsAsc(): LiveData<List<Contact>>? {
+        currentSortOrder = SortOrder.ASC
         return repository.sortAsc()
     }
 
     fun sortContactsDesc(): LiveData<List<Contact>>? {
+        currentSortOrder = SortOrder.DESC
         return repository.sortDesc()
     }
+
+    fun getSortedContacts(): LiveData<List<Contact>>? {
+        return when (currentSortOrder) {
+            SortOrder.ASC -> repository.sortAsc()
+            SortOrder.DESC -> repository.sortDesc()
+            else -> repository.allContacts
+        }
+    }
+
 }

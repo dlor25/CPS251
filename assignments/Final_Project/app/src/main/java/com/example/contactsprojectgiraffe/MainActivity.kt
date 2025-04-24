@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
 // Observe all contacts
-        viewModel.getAllContacts()?.observe(this) { contacts ->
+        viewModel.getSortedContacts()?.observe(this) { contacts ->
             contacts?.let { adapter.setContacts(it) } // Safely handling null
         }
 
