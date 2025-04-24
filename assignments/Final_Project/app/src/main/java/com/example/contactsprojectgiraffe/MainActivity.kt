@@ -11,6 +11,7 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: ContactListAdapter
+    private var isSearchButtonClicked = false // Flag to track search button click
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,17 +26,20 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
         // Initialize ViewModel
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-// Observe all contacts
+        // Observe all contacts
         viewModel.getSortedContacts()?.observe(this) { contacts ->
             contacts?.let { adapter.setContacts(it) } // Safely handling null
         }
 
-// Observe search results
+        // Observe search results
         viewModel.getSearchResults().observe(this) { results ->
-            if (results.isEmpty()) {
-                Toast.makeText(this, "No results found.", Toast.LENGTH_SHORT).show()
-            } else {
-                adapter.setContacts(results)
+            if (isSearchButtonClicked) {
+                if (results.isEmpty()) {
+                    Toast.makeText(this, "No results found.", Toast.LENGTH_SHORT).show()
+                } else {
+                    adapter.setContacts(results)
+                }
+                isSearchButtonClicked = false // Reset the flag after showing results
             }
         }
 
@@ -66,6 +70,7 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
                 return@setOnClickListener
             }
 
+            isSearchButtonClicked = true // Set flag when search button is clicked
             viewModel.findContact(searchText)
 
             // Clear input fields
