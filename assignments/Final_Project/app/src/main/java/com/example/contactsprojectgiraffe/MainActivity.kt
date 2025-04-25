@@ -18,78 +18,67 @@ class MainActivity : AppCompatActivity(), ContactListAdapter.OnContactDeleteList
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Setup RecyclerView
+        // RecyclerView
         adapter = ContactListAdapter(this)
         binding.recyclerView.adapter = adapter
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Initialize ViewModel
+        // ViewModel
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        // Observe all contacts
-        viewModel.getSortedContacts()?.observe(this) { contacts ->
-            contacts?.let { adapter.setContacts(it) } // Safely handling null
-        }
+        // Observe ONLY displayedContacts
+        viewModel.displayedContacts.observe(this) { contacts ->
+            // Show the contacts
+            adapter.setContacts(contacts)
 
-        // Observe search results
-        viewModel.getSearchResults().observe(this) { results ->
-            if (isSearchButtonClicked) {
-                if (results.isEmpty()) {
-                    Toast.makeText(this, "No results found.", Toast.LENGTH_SHORT).show()
-                } else {
-                    adapter.setContacts(results)
+            // If the search button was clicked and no results were found, show the Toast
+            viewModel.searchFailed.observe(this) { failed ->
+                if (failed && isSearchButtonClicked) {
+                    showToast("No results found.")
+                    isSearchButtonClicked = false
                 }
-                isSearchButtonClicked = false // Reset the flag after showing results
             }
         }
 
-        // Add button click listener
+        // Add
         binding.buttonAdd.setOnClickListener {
             val name = binding.editTextName.text.toString().trim()
             val phone = binding.editTextPhone.text.toString().trim()
 
             if (name.isEmpty() || phone.isEmpty()) {
                 showToast("Please enter both name and phone number")
-                return@setOnClickListener
+            } else {
+                viewModel.insertContact(Contact(name, phone))
+                binding.editTextName.text.clear()
+                binding.editTextPhone.text.clear()
+                binding.editTextName.requestFocus()
             }
-
-            val contact = Contact(name, phone)
-            viewModel.insertContact(contact)
-
-            // Clear input fields
-            binding.editTextName.text.clear()
-            binding.editTextPhone.text.clear()
-            binding.editTextName.requestFocus()
         }
 
-        // Search button click listener
+        // Search
         binding.buttonSearch.setOnClickListener {
-            val searchText = binding.editTextName.text.toString().trim()
-            if (searchText.isEmpty()) {
+            val query = binding.editTextName.text.toString().trim()
+            if (query.isEmpty()) {
                 showToast("Please enter a search criteria in the name field")
-                return@setOnClickListener
+            } else {
+                isSearchButtonClicked = true
+                viewModel.findContact(query)
+                binding.editTextName.text.clear()
+                binding.editTextPhone.text.clear()
             }
-
-            isSearchButtonClicked = true // Set flag when search button is clicked
-            viewModel.findContact(searchText)
-
-            // Clear input fields
-            binding.editTextName.text.clear()
-            binding.editTextPhone.text.clear()
         }
 
-        // Sort buttons click listeners
+        // Sort
         binding.buttonSortAsc.setOnClickListener {
-            viewModel.sortContactsAsc()?.observe(this) { contacts ->
-                contacts?.let { adapter.setContacts(it) }
-            }
+            viewModel.sortContactsAsc()
         }
 
         binding.buttonSortDesc.setOnClickListener {
-            viewModel.sortContactsDesc()?.observe(this) { contacts ->
-                contacts?.let { adapter.setContacts(it) }
-            }
+            viewModel.sortContactsDesc()
         }
+
+        // Refresh state after rotation
+        viewModel.refreshLastAction()
     }
 
     override fun onDeleteClick(contact: Contact) {
